@@ -6,18 +6,7 @@ class: SMT303
 grade:
 ---
 [[SMT303]]
-[[Projects]]
 # Projet Handicap
-## TODO
-- Assure the sensor and according beeping/vibration is working as expected
-- Find a way to connect all the sensors to a central breadboard
-- Figure out optimal frequency to beep/vibrate at
-	- Current: $distance/5 * distance$
-- Take into account temperature to ensure accurate measurements
-
-## General Info
-- The vibration motor and the buzzer are connected inversely: the ground is the I/O pin and the + is the 3.5v
-
 ## Organisation of the connections
 <u>Available I/O Pins: 10, 11, 12, A4, A5</u>
 - 1 Central breadboard that relays information to the Arduino
@@ -39,7 +28,12 @@ grade:
 		- `vibratorRight` → `pin 8`
 		- `vibratorLeft` → `pin 9`
 
-
+## TODO
+- Assure the sensor and according beeping/vibration is working as expected
+- Find a way to connect all the sensors to a central breadboard
+- Figure out optimal frequency to beep/vibrate at
+	- Current: $distance/5 * distance$
+- Take into account temperature to ensure accurate measurements
 
 ---
 # Related & References
