@@ -8,6 +8,7 @@ void setup() {
   // put your setup code here, to run once:
   pinMode(trig, OUTPUT);
   pinMode(echo, INPUT);
+  pinMode(vibration_buzzer, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -18,18 +19,24 @@ void loop() {
   digitalWrite(trig, HIGH);
   delayMicroseconds(10);
   digitalWrite(trig, LOW);
+  
 
   duration = pulseIn(echo, HIGH);
 
   distance = (duration / 2) * 0.0343;
-
-  digitalWrite(vibration_buzzer, LOW);
-  delayMicroseconds(10);
-  digitalWrite(vibration_buzzer, HIGH);
-  delay(distance/5*distance);
+  
+  if (distance < 200)
+  {
+    digitalWrite(vibration_buzzer, LOW);
+    delay(100);
+    digitalWrite(vibration_buzzer, HIGH);
+    delay(distance * 10);
+  }
 
   Serial.print(distance);
   Serial.print("cm\n");
+
+  
 }
 
 

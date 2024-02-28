@@ -11,16 +11,16 @@ grade:
 <u>Available I/O Pins: 10, 11, 12, A4, A5</u>
 - 1 Central breadboard that relays information to the Arduino
 	- Data for each sensor
-		- `sensorFront1` → `pin 1`
-		- `sensorFront2` → `pin 2`
-		- `sensorBack1` → `pin 3`
-		- `sensorBack2` → `pin 4`
+		- `sensorFront1` → `pin A0`
+		- `sensorFront2` → `pin A1`
+		- `sensorBack1` → `pin A2`
+		- `sensorBack2` → `pin A3`
 		- `sensorRight`
-			- `TRIG` → `pin A0`
-			- `ECHO` → `pin A1`
+			- `TRIG` → `pin 1`
+			- `ECHO` → `pin 2`
 		- `sensorLeft`
-			- `TRIG` → `pin A2`
-			- `ECHO` → `pin A3`
+			- `TRIG` → `pin 3`
+			- `ECHO` → `pin 4`
 	- Notification of detected object
 		- `buzzer` → `pin 5`
 		- `vibratorFront` → `pin 6`
