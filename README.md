@@ -24,9 +24,9 @@ grade:
 	- Notification of detected object
 		- `buzzer` → `pin 5`
 		- `vibratorFront` → `pin 6`
-		- `vibratorBack` → `pin 7`
-		- `vibratorRight` → `pin 8`
-		- `vibratorLeft` → `pin 9`
+		- `vibratorRight` → `pin 7`
+		- `vibratorLeft` → `pin 8`
+		- `vibratorBack` → `pin 9`
 
 ## TODO
 - Assure the sensor and according beeping/vibration is working as expected
