@@ -1,4 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "sketch": "capteur_sen0307\\capteur_sen0307.ino"
+    "sketch": "capteur_sen0307\\capteur_sen0307.ino",
+    "port": "COM7"
 }

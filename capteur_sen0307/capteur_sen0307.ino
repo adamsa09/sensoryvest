@@ -5,32 +5,55 @@
 // # Product SKU : SEN0307
 // # Version     : 1.0
 
+#define MAX_RANG (520)        // the max measurement vaule of the module is 520cm(a little bit longer than  effective max range)
+#define ADC_SOLUTION (1023.0) // ADC accuracy of Arduino UNO is 10bit
 
-#define  MAX_RANG      (520)//the max measurement vaule of the module is 520cm(a little bit longer than  effective max range)
-#define  ADC_SOLUTION      (1023.0)//ADC accuracy of Arduino UNO is 10bit
+int sensityPin = A0; // select the input pin
+int vibration = 7;
 
-int sensityPin = A4;    // select the input pin 
-int vibration = 9;
-void setup() {
+unsigned long previousTime = 0;
+
+bool isBuzzing = false;
+unsigned long buzzStartTime = 0;
+
+void setup()
+{
   // Serial init
   Serial.begin(9600);
   pinMode(vibration, OUTPUT);
 }
+
 float distance, sensity_t;
-void loop() {
+
+void loop()
+{
   // read the value from the sensor:
   sensity_t = analogRead(sensityPin);
   // turn the ledPin on
-  distance = sensity_t * MAX_RANG  / ADC_SOLUTION;//
+  distance = sensity_t * MAX_RANG / ADC_SOLUTION; //
+
+  unsigned long currentTime = millis();
+  unsigned long interval = 10 * distance;
 
   if (distance < 200)
   {
-    digitalWrite(vibration, LOW);
-    delay(100);
-    digitalWrite(vibration, HIGH);
-    delay(distance * 10);
+    if (currentTime - previousTime >= interval)
+    {
+      if (!isBuzzing)
+      {
+        digitalWrite(vibration, LOW);
+        buzzStartTime = millis();
+        isBuzzing = true;
+      }
+      else if (isBuzzing && millis() - buzzStartTime > 100)
+      {
+        digitalWrite(vibration, HIGH);
+        isBuzzing = false;
+      }
+      previousTime = currentTime;
+    }
   }
 
-  Serial.print(distance,0);
+  Serial.print(distance, 0);
   Serial.println("cm");
 }
